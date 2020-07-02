@@ -18,6 +18,10 @@ class UsersController < ApplicationController
   
 end 
 
+  def console
+    puts "Hello im coming from postman!"
+  end
+
 
   def login
     @user = User.find_by(username: params[:username])
