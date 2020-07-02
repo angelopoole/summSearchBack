@@ -18,6 +18,15 @@ class UsersController < ApplicationController
   
 end 
 
+def follow
+  @user = User.find_by(username: params[:username])
+  tofollow = User.find_by(tofollow: params[:tofollow])
+  user.valid_follow_request(@user, tofollow)
+
+  @user.followers << tofollow
+
+end
+
   def console
     puts "Hello im coming from postman!"
   end
@@ -30,7 +39,7 @@ end
       wristband = encode_token({user_id: @user.id})
       render json: { user: UserSerializer.new(@user), token: wristband }
     else
-      render json: {error: "NICE TRY"}, status: 401
+      render json: {error: "Failed to log in"}, status: 401
     end
   end
 

@@ -8,10 +8,18 @@ class User < ApplicationRecord
     has_many :following_users, foreign_key: :followee_id, class_name: 'Follow'
     has_many :followers, through: :following_users
 
-    def console
-        puts "Hi!"
+    def valid_follow_request(user, tofollow)
+        puts self
+        if self.followers.include?(tofollow)
+            return false
+        else
+            self.followers << tofollow
+        end
     end
 
+    def check
+        puts "hello"
+    end
 
     has_secure_password
 end
