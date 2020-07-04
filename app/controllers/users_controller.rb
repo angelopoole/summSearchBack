@@ -21,7 +21,7 @@ end
 def follow
   @user = User.find_by(username: params[:username])
   tofollow = User.find_by(tofollow: params[:tofollow])
-  user.valid_follow_request(@user, tofollow)
+  @user.validify_follow(@user, tofollow)
 
   @user.followers << tofollow
 

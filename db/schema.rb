@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_01_180217) do
+ActiveRecord::Schema.define(version: 2020_07_04_194406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "champions", force: :cascade do |t|
+    t.string "name"
+    t.string "title"
+    t.string "blurb"
+    t.string "image"
+    t.string "tags"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "follows", force: :cascade do |t|
     t.integer "follower_id"

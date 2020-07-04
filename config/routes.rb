@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :champions
   resources :follows
   resources :users
   get 'console', to: 'users#console'

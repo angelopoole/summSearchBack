@@ -8,8 +8,7 @@ class User < ApplicationRecord
     has_many :following_users, foreign_key: :followee_id, class_name: 'Follow'
     has_many :followers, through: :following_users
 
-    def valid_follow_request(user, tofollow)
-        puts self
+    def validify_follow(user, tofollow)
         if self.followers.include?(tofollow)
             return false
         else
